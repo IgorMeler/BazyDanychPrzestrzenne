@@ -9,6 +9,11 @@ SELECT * FROM public.popp
 
 SELECT * FROM public.popp CROSS JOIN public.rivers WHERE ST_Distance(popp.geom, rivers.geom) < 1000 
                                                    AND popp.f_codedesc = 'Building';
+
+CREATE TABLE tableB
+AS(SELECT popp.gid, popp.cat, popp.f_codedesc, popp.f_code, popp.type, popp.geom FROM public.popp 
+CROSS JOIN public.majrivers WHERE ST_Distance(popp.geom, majrivers.geom) < 1000 
+                            AND popp.f_codedesc = 'Building' )
                                                    
 --5
 
